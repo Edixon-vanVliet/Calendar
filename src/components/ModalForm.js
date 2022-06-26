@@ -12,7 +12,7 @@ const ModalForm = ({ show, onSave, onCancel, date }) => {
   };
   return (
     <Modal
-      title="Basic Modal"
+      title="Event"
       visible={show}
       okText="Save"
       onOk={handleOk}
