@@ -18,6 +18,7 @@ const Date = memo(({ date, currentMonth = true }) => {
     localStorage.setItem(date.format(DATE_FORMAT), JSON.stringify(newEvents));
 
     setEvents(newEvents);
+    setShowModal(false);
   };
 
   useEffect(() => {
