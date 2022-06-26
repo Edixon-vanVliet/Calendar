@@ -37,8 +37,8 @@ const Date = memo(({ date, currentMonth = true }) => {
       >
         <p>{date.date()}</p>
         <div className="events">
-          {events.map((event) => (
-            <p className="event" key={event.date}>
+          {events.map((event, index) => (
+            <p className="event" key={index}>
               {event.name}
             </p>
           ))}
