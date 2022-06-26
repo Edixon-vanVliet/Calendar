@@ -35,6 +35,13 @@ const Date = memo(({ date, currentMonth = true }) => {
         onClick={handleClick}
       >
         <p>{date.date()}</p>
+        <div className="events">
+          {events.map((event) => (
+            <p className="event" key={event.date}>
+              {event.name}
+            </p>
+          ))}
+        </div>
       </div>
       <ModalForm
         show={showModal}
