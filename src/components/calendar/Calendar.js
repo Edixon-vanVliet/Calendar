@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import moment from "moment";
+import Days from "./Days";
 
 import "./calendar.css";
 
@@ -9,6 +10,8 @@ const Calendar = () => {
   return (
     <div className="calendar">
       <h2>{date.format("MMMM")}</h2>
+
+      <Days />
     </div>
   );
 };

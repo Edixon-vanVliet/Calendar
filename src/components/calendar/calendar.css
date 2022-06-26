@@ -1,3 +1,18 @@
 .calendar > h2 {
   text-align: center;
 }
+
+.calendar > div > div {
+  padding: 5px;
+}
+
+.calendar > .days {
+  display: grid;
+  column-gap: 10px;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: right;
+}
+
+.calendar > .days .day {
+  background: #d7f6ff;
+}
