@@ -7,3 +7,9 @@
    - Optional description
 3. After clicking any date in the calendar, open the form to create an event
 4. After saving the event, display it inside the calendar selected day
+
+![Calendar](./images/calendar.png)
+
+![Modal](./images/modal.png)
+
+![Calendar-event](./images/calendar-with-event.png)
