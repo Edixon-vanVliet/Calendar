@@ -1,16 +1,31 @@
-import React, { memo, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import ModalForm from "../ModalForm";
 
 const DATE_FORMAT = "MM/DD/YYYY";
 
 const Date = memo(({ date, currentMonth = true }) => {
+  const [events, setEvents] = useState([]);
   const [showModal, setShowModal] = useState(false);
 
   const handleClick = () => {
-    setShowModal(true);
+    if (currentMonth) {
+      setShowModal(true);
+    }
   };
 
-  const handleSave = (values) => {};
+  const handleSave = (newEvent) => {
+    const newEvents = [...events, newEvent];
+    localStorage.setItem(date.format(DATE_FORMAT), JSON.stringify(newEvents));
+
+    setEvents(newEvents);
+  };
+
+  useEffect(() => {
+    const events =
+      JSON.parse(localStorage.getItem(date.format(DATE_FORMAT))) ?? [];
+
+    setEvents(events);
+  }, [date]);
 
   return (
     <>
@@ -19,7 +34,7 @@ const Date = memo(({ date, currentMonth = true }) => {
         style={{ color: currentMonth ? "black" : "#ccc" }}
         onClick={handleClick}
       >
-        {date.date()}
+        <p>{date.date()}</p>
       </div>
       <ModalForm
         show={showModal}
