@@ -4,8 +4,8 @@
   --hover: #eee;
 }
 
-.calendar > h2 {
-  text-align: center;
+.calendar {
+  margin-top: 5px;
 }
 
 .calendar > div > div {

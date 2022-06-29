@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import moment from "moment";
+import Header from "./Header";
 import Days from "./Days";
 import Dates from "./Dates";
+import moment from "moment";
 
 import "./calendar.css";
 
@@ -18,7 +19,7 @@ const Calendar = () => {
 
   return (
     <div className="calendar">
-      <h2>{currentDate.format("MMMM")}</h2>
+      <Header />
 
       <Days />
       <Dates currentDate={currentDate} startingDate={startingDate} />
