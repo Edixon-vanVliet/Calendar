@@ -6,7 +6,7 @@ import { nextMonth, previousMonth } from "../../redux/calendarSlice";
 import moment from "moment";
 
 const Header = () => {
-  const current = useSelector((state) => state.calendar.current);
+  const current = useSelector((store) => store.calendar.current);
   const dispatch = useDispatch();
 
   return (
