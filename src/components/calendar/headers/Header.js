@@ -4,13 +4,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { nextMonth, previousMonth } from "../../../redux/calendarSlice";
 
 import moment from "moment";
+import styles from "./header.module.scss";
 
 const Header = () => {
   const current = useSelector((store) => store.calendar.current);
   const dispatch = useDispatch();
 
   return (
-    <div style={{ display: "flex", justifyContent: "space-between" }}>
+    <div className={styles.header}>
       <Button type="primary" onClick={() => dispatch(previousMonth())}>
         Previous
       </Button>
