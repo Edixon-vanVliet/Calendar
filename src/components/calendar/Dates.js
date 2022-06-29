@@ -1,13 +1,16 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { shallowEqual, useSelector } from "react-redux";
 import Date from "./Date";
 import moment from "moment";
 
 const Dates = () => {
-  const { currentMonth, dateRange } = useSelector((store) => ({
-    dateRange: store.calendar.dateRange,
-    currentMonth: store.calendar.current.month,
-  }));
+  const { currentMonth, dateRange } = useSelector(
+    (store) => ({
+      dateRange: store.calendar.dateRange,
+      currentMonth: store.calendar.current.month,
+    }),
+    shallowEqual
+  );
 
   const getDates = () => {
     const dates = [];
