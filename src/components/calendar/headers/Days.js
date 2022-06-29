@@ -1,15 +1,17 @@
 import React from "react";
 
+import styles from "./days.module.scss";
+
 const Days = () => {
   return (
-    <div className="days">
-      <div className="day">Su</div>
-      <div className="day">Mo</div>
-      <div className="day">Tu</div>
-      <div className="day">We</div>
-      <div className="day">Th</div>
-      <div className="day">Fr</div>
-      <div className="day">Sa</div>
+    <div className={styles.days}>
+      <div className={styles.day}>Su</div>
+      <div className={styles.day}>Mo</div>
+      <div className={styles.day}>Tu</div>
+      <div className={styles.day}>We</div>
+      <div className={styles.day}>Th</div>
+      <div className={styles.day}>Fr</div>
+      <div className={styles.day}>Sa</div>
     </div>
   );
 };

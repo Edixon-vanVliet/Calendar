@@ -1,0 +1,11 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/mixins.scss";
+
+.days {
+    @include grid;
+
+    .day {
+        background: $primary-color;
+        padding: 5px;
+    }
+}
