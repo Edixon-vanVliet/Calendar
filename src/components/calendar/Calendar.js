@@ -4,6 +4,7 @@ import { Header, Days } from "./headers";
 import Dates from "./dates";
 import { initializeCalendar } from "../../redux/calendarSlice";
 
+import styles from "./calendar.module.scss";
 import "./calendar.css";
 
 const Calendar = () => {
@@ -14,7 +15,7 @@ const Calendar = () => {
   }, [dispatch]);
 
   return (
-    <div className="calendar">
+    <div className={styles.calendar}>
       <Header />
 
       <Days />
