@@ -1,12 +1,17 @@
 import React from "react";
 import { Modal, Form, Input, TimePicker } from "antd";
+import { timeFormat } from "../utils";
 
 const ModalForm = ({ show, onSave, onCancel, date }) => {
   const [form] = Form.useForm();
   const handleOk = async () => {
     try {
       const values = await form.validateFields();
-      onSave(values);
+      onSave({
+        ...values,
+        start: values.start.format(timeFormat),
+        end: values.end.format(timeFormat),
+      });
       form.resetFields();
     } catch (error) {}
   };

@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import moment from "moment";
+import { dateFormat } from "../utils";
 
 const initialState = {
   current: { year: 0, month: 0 },
@@ -8,7 +9,6 @@ const initialState = {
 };
 
 const daysInWeek = 7;
-const dateFormat = "MM/DD/YYYY";
 const localStorageName = "events";
 
 export const calendarSlice = createSlice({
@@ -52,10 +52,12 @@ export const calendarSlice = createSlice({
       };
     },
     addEvent: (state, action) => {
-      const events = { ...state.events };
       const event = action.payload;
 
-      events[event.date] = [...(events[event.date] ?? []), event];
+      const events = {
+        ...state.events,
+        [event.date]: [...(state.events[event.date] ?? []), event],
+      };
 
       localStorage.setItem(localStorageName, JSON.stringify(events));
 
