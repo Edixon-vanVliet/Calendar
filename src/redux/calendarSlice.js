@@ -7,7 +7,7 @@ const initialState = {
   events: {},
 };
 
-const lastWeekDay = 6;
+const daysInWeek = 7;
 const dateFormat = "MM/DD/YYYY";
 const localStorageName = "events";
 
@@ -83,7 +83,7 @@ const getFirstDayOfWeek = (date) => {
 };
 
 const getLastDayOfWeek = (date) => {
-  const day = lastWeekDay - date.day();
+  const day = daysInWeek - date.day();
   date.add(day, "days");
 };
 
