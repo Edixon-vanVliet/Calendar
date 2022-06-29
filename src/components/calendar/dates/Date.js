@@ -4,6 +4,8 @@ import { addEvent } from "../../../redux/calendarSlice";
 import { dateFormat } from "../../../utils";
 import ModalForm from "../../ModalForm";
 
+import styles from "./dates.module.scss";
+
 const Date = memo(({ date, currentMonth = true }) => {
   const events = useSelector(
     (store) => store.calendar.events[date.format(dateFormat)] ?? [],
@@ -29,14 +31,14 @@ const Date = memo(({ date, currentMonth = true }) => {
   return (
     <>
       <div
-        className="date"
+        className={styles.date}
         style={{ color: currentMonth ? "black" : "#ccc" }}
         onClick={handleClick}
       >
         <p>{date.date()}</p>
-        <div className="events">
+        <div className={styles.events}>
           {events.map((event, index) => (
-            <p className="event" key={index}>
+            <p className={styles.event} key={index}>
               {event.name}
             </p>
           ))}

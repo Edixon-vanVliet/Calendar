@@ -3,6 +3,8 @@ import { shallowEqual, useSelector } from "react-redux";
 import Date from "./Date";
 import moment from "moment";
 
+import styles from "./dates.module.scss";
+
 const Dates = () => {
   const { currentMonth, dateRange } = useSelector(
     (store) => ({
@@ -37,7 +39,7 @@ const Dates = () => {
     return dates;
   };
 
-  return <div className="dates">{getDates()}</div>;
+  return <div className={styles.dates}>{getDates()}</div>;
 };
 
 export default Dates;
