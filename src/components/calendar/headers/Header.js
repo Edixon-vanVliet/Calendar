@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "antd";
 import { useDispatch, useSelector } from "react-redux";
-import { nextMonth, previousMonth } from "../../redux/calendarSlice";
+import { nextMonth, previousMonth } from "../../../redux/calendarSlice";
 
 import moment from "moment";
 

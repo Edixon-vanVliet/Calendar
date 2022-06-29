@@ -1,8 +1,8 @@
 import React, { memo, useState } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
-import { addEvent } from "../../redux/calendarSlice";
-import { dateFormat } from "../../utils";
-import ModalForm from "../ModalForm";
+import { addEvent } from "../../../redux/calendarSlice";
+import { dateFormat } from "../../../utils";
+import ModalForm from "../../ModalForm";
 
 const Date = memo(({ date, currentMonth = true }) => {
   const events = useSelector(

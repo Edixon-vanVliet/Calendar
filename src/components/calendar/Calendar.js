@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import Header from "./Header";
-import Days from "./Days";
-import Dates from "./Dates";
+import { Header, Days } from "./headers";
+import Dates from "./dates";
 import { initializeCalendar } from "../../redux/calendarSlice";
 
 import "./calendar.css";
