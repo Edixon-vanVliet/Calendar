@@ -1,11 +1,18 @@
-import React, { memo, useEffect, useState } from "react";
+import React, { memo, useState } from "react";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import { addEvent } from "../../redux/calendarSlice";
+import { dateFormat } from "../../utils";
 import ModalForm from "../ModalForm";
 
-const DATE_FORMAT = "MM/DD/YYYY";
-
 const Date = memo(({ date, currentMonth = true }) => {
-  const [events, setEvents] = useState([]);
+  const events = useSelector(
+    (store) => store.calendar.events[date.format(dateFormat)] ?? [],
+    shallowEqual
+  );
+
   const [showModal, setShowModal] = useState(false);
+
+  const dispatch = useDispatch();
 
   const handleClick = () => {
     if (currentMonth) {
@@ -14,19 +21,10 @@ const Date = memo(({ date, currentMonth = true }) => {
   };
 
   const handleSave = (newEvent) => {
-    const newEvents = [...events, newEvent];
-    localStorage.setItem(date.format(DATE_FORMAT), JSON.stringify(newEvents));
+    dispatch(addEvent(newEvent));
 
-    setEvents(newEvents);
     setShowModal(false);
   };
-
-  useEffect(() => {
-    const events =
-      JSON.parse(localStorage.getItem(date.format(DATE_FORMAT))) ?? [];
-
-    setEvents(events);
-  }, [date]);
 
   return (
     <>
@@ -46,7 +44,7 @@ const Date = memo(({ date, currentMonth = true }) => {
       </div>
       <ModalForm
         show={showModal}
-        date={date.format(DATE_FORMAT)}
+        date={date.format(dateFormat)}
         onSave={handleSave}
         onCancel={() => setShowModal(false)}
       />
