@@ -1,29 +1,34 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import Date from "./Date";
+import moment from "moment";
 
-const DAYS_IN_WEEK = 7;
+const Dates = () => {
+  const { currentMonth, dateRange } = useSelector((store) => ({
+    dateRange: store.calendar.dateRange,
+    currentMonth: store.calendar.current.month,
+  }));
 
-const Dates = ({ currentDate, startingDate }) => {
   const getDates = () => {
-    if (currentDate === undefined || startingDate === undefined) {
-      return [];
+    const dates = [];
+
+    if (dateRange.length !== 2) {
+      return dates;
     }
 
-    let daysInCalendar = currentDate.endOf("month").diff(startingDate, "days");
-    daysInCalendar += DAYS_IN_WEEK - (daysInCalendar % DAYS_IN_WEEK);
+    const startingDate = moment(dateRange[0]);
+    const endingDate = moment(dateRange[1]);
 
-    const dates = [];
-    const date = startingDate.clone();
-    for (let i = 0; i < daysInCalendar; i++) {
+    while (!startingDate.isSame(endingDate)) {
       dates.push(
         <Date
-          key={date.dayOfYear()}
-          date={date.clone()}
-          currentMonth={date.month() === currentDate.month()}
+          key={startingDate.dayOfYear()}
+          date={startingDate.clone()}
+          currentMonth={currentMonth === startingDate.month() + 1}
         />
       );
 
-      date.add(1, "day");
+      startingDate.add(1, "days");
     }
 
     return dates;
