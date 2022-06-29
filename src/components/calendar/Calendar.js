@@ -5,7 +5,6 @@ import Dates from "./dates";
 import { initializeCalendar } from "../../redux/calendarSlice";
 
 import styles from "./calendar.module.scss";
-import "./calendar.css";
 
 const Calendar = () => {
   const dispatch = useDispatch();
