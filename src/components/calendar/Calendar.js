@@ -1,12 +1,12 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Header, Days } from './headers';
-import Dates from './dates';
 import { initializeCalendar } from '../../redux/calendarSlice';
+import { Dates } from './dates';
+import { Header, Days } from './headers';
 
 import styles from './calendar.module.scss';
 
-const Calendar = () => {
+function Calendar() {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -21,6 +21,6 @@ const Calendar = () => {
       <Dates />
     </div>
   );
-};
+}
 
 export default Calendar;

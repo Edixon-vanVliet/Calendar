@@ -11,6 +11,26 @@ const initialState = {
 const daysInWeek = 7;
 const localStorageName = 'events';
 
+const getFirstDayOfWeek = (date) => {
+  const day = date.day();
+  date.subtract(day, 'days');
+};
+
+const getLastDayOfWeek = (date) => {
+  const day = daysInWeek - date.day();
+  date.add(day, 'days');
+};
+
+const calculateDateRange = (date) => {
+  const startingDate = date.clone().startOf('month');
+  const endingDate = date.clone().endOf('month');
+
+  getFirstDayOfWeek(startingDate);
+  getLastDayOfWeek(endingDate);
+
+  return [startingDate.format(dateFormat), endingDate.format(dateFormat)];
+};
+
 export const calendarSlice = createSlice({
   name: 'calendar',
   initialState,
@@ -68,26 +88,6 @@ export const calendarSlice = createSlice({
     },
   },
 });
-
-const calculateDateRange = (date) => {
-  const startingDate = date.clone().startOf('month');
-  const endingDate = date.clone().endOf('month');
-
-  getFirstDayOfWeek(startingDate);
-  getLastDayOfWeek(endingDate);
-
-  return [startingDate.format(dateFormat), endingDate.format(dateFormat)];
-};
-
-const getFirstDayOfWeek = (date) => {
-  const day = date.day();
-  date.subtract(day, 'days');
-};
-
-const getLastDayOfWeek = (date) => {
-  const day = daysInWeek - date.day();
-  date.add(day, 'days');
-};
 
 export const { initializeCalendar, nextMonth, previousMonth, addEvent } = calendarSlice.actions;
 

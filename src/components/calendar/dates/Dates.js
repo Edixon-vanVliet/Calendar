@@ -1,11 +1,11 @@
-import React from 'react';
-import { shallowEqual, useSelector } from 'react-redux';
-import Date from './Date';
 import moment from 'moment';
+import { shallowEqual, useSelector } from 'react-redux';
+import { dateFormat } from '../../../utils';
+import Date from './Date';
 
 import styles from './dates.module.scss';
 
-const Dates = () => {
+function Dates() {
   const { currentMonth, dateRange } = useSelector(
     (store) => ({
       dateRange: store.calendar.dateRange,
@@ -28,7 +28,7 @@ const Dates = () => {
       dates.push(
         <Date
           key={startingDate.dayOfYear()}
-          date={startingDate.clone()}
+          date={startingDate.format(dateFormat)}
           currentMonth={currentMonth === startingDate.month() + 1}
         />
       );
@@ -40,6 +40,6 @@ const Dates = () => {
   };
 
   return <div className={styles.dates}>{getDates()}</div>;
-};
+}
 
 export default Dates;

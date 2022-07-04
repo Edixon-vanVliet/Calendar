@@ -1,8 +1,8 @@
-import React from 'react';
 import { Modal, Form, Input, TimePicker } from 'antd';
+import PropTypes from 'prop-types';
 import { timeFormat } from '../../utils';
 
-const ModalForm = ({ show, onSave, onCancel, date }) => {
+function ModalForm({ date, show, onCancel, onSave }) {
   const [form] = Form.useForm();
   const handleOk = async () => {
     try {
@@ -13,7 +13,9 @@ const ModalForm = ({ show, onSave, onCancel, date }) => {
         end: values.end.format(timeFormat),
       });
       form.resetFields();
-    } catch (error) {}
+    } catch (error) {
+      // console.log(error);
+    }
   };
   return (
     <Modal title="Event" visible={show} okText="Save" onOk={handleOk} onCancel={onCancel}>
@@ -52,6 +54,13 @@ const ModalForm = ({ show, onSave, onCancel, date }) => {
       </Form>
     </Modal>
   );
+}
+
+ModalForm.propTypes = {
+  date: PropTypes.string.isRequired,
+  show: PropTypes.bool.isRequired,
+  onCancel: PropTypes.func.isRequired,
+  onSave: PropTypes.func.isRequired,
 };
 
 export default ModalForm;
