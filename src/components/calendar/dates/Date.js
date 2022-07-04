@@ -2,7 +2,7 @@ import React, { memo, useState } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { addEvent } from "../../../redux/calendarSlice";
 import { dateFormat } from "../../../utils";
-import ModalForm from "../../ModalForm";
+import ModalForm from "../../modal-form";
 
 import styles from "./dates.module.scss";
 
