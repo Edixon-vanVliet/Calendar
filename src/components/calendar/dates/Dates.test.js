@@ -44,4 +44,15 @@ describe("Dates tests", () => {
     expect(screen.getAllByText("29").length).toBe(2);
     expect(screen.getAllByText("30").length).toBe(2);
   });
+
+  test("should display event", () => {
+    render(
+      <Provider store={store}>
+        <Dates />
+      </Provider>
+    );
+
+    const event = screen.getByText("Independence Day");
+    expect(event).toBeInTheDocument();
+  });
 });
