@@ -1,8 +1,8 @@
-import React from "react";
-import { Modal, Form, Input, TimePicker } from "antd";
-import { timeFormat } from "../../utils";
+import { Modal, Form, Input, TimePicker } from 'antd';
+import PropTypes from 'prop-types';
+import { timeFormat } from '../../utils';
 
-const ModalForm = ({ show, onSave, onCancel, date }) => {
+function ModalForm({ date, show, onCancel, onSave }) {
   const [form] = Form.useForm();
   const handleOk = async () => {
     try {
@@ -13,16 +13,12 @@ const ModalForm = ({ show, onSave, onCancel, date }) => {
         end: values.end.format(timeFormat),
       });
       form.resetFields();
-    } catch (error) {}
+    } catch (error) {
+      // console.log(error);
+    }
   };
   return (
-    <Modal
-      title="Event"
-      visible={show}
-      okText="Save"
-      onOk={handleOk}
-      onCancel={onCancel}
-    >
+    <Modal title="Event" visible={show} okText="Save" onOk={handleOk} onCancel={onCancel}>
       <Form
         form={form}
         labelCol={{ span: 5 }}
@@ -40,24 +36,16 @@ const ModalForm = ({ show, onSave, onCancel, date }) => {
           rules={[
             {
               required: true,
-              message: "Please input the name of the event",
+              message: 'Please input the name of the event',
             },
           ]}
         >
           <Input />
         </Form.Item>
-        <Form.Item
-          name="start"
-          label="Start Time"
-          rules={[{ required: true, message: "Please provide a start time" }]}
-        >
+        <Form.Item name="start" label="Start Time" rules={[{ required: true, message: 'Please provide a start time' }]}>
           <TimePicker />
         </Form.Item>
-        <Form.Item
-          name="end"
-          label="End Time"
-          rules={[{ required: true, message: "Please provide an end time" }]}
-        >
+        <Form.Item name="end" label="End Time" rules={[{ required: true, message: 'Please provide an end time' }]}>
           <TimePicker />
         </Form.Item>
         <Form.Item name="description" label="Description">
@@ -66,6 +54,13 @@ const ModalForm = ({ show, onSave, onCancel, date }) => {
       </Form>
     </Modal>
   );
+}
+
+ModalForm.propTypes = {
+  date: PropTypes.string.isRequired,
+  show: PropTypes.bool.isRequired,
+  onCancel: PropTypes.func.isRequired,
+  onSave: PropTypes.func.isRequired,
 };
 
 export default ModalForm;

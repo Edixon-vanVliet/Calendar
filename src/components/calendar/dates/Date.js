@@ -1,16 +1,13 @@
-import React, { memo, useState } from "react";
-import { shallowEqual, useDispatch, useSelector } from "react-redux";
-import { addEvent } from "../../../redux/calendarSlice";
-import { dateFormat } from "../../../utils";
-import ModalForm from "../../modal-form";
+import PropTypes from 'prop-types';
+import { memo, useState } from 'react';
+import { shallowEqual, useDispatch, useSelector } from 'react-redux';
+import { addEvent } from '../../../redux/calendarSlice';
+import { ModalForm } from '../../modal-form';
 
-import styles from "./dates.module.scss";
+import styles from './dates.module.scss';
 
-const Date = memo(({ date, currentMonth = true }) => {
-  const events = useSelector(
-    (store) => store.calendar.events[date.format(dateFormat)] ?? [],
-    shallowEqual
-  );
+const Date = memo(({ date, currentMonth }) => {
+  const events = useSelector((store) => store.calendar.events[date] ?? [], shallowEqual);
 
   const [showModal, setShowModal] = useState(false);
 
@@ -31,27 +28,34 @@ const Date = memo(({ date, currentMonth = true }) => {
   return (
     <>
       <div
+        role="button"
+        tabIndex={0}
         className={styles.date}
-        style={{ color: currentMonth ? "black" : "#ccc" }}
+        style={{ color: currentMonth ? 'black' : '#ccc' }}
         onClick={handleClick}
+        onKeyDown={handleClick}
       >
-        <p>{date.date()}</p>
+        <p>{date.substring(date.length - 2)}</p>
         <div className={styles.events}>
-          {events.map((event, index) => (
-            <p className={styles.event} key={index}>
+          {events.map((event) => (
+            <p className={styles.event} key={`${event.date}T${event.start}`}>
               {event.name}
             </p>
           ))}
         </div>
       </div>
-      <ModalForm
-        show={showModal}
-        date={date.format(dateFormat)}
-        onSave={handleSave}
-        onCancel={() => setShowModal(false)}
-      />
+      <ModalForm show={showModal} date={date} onSave={handleSave} onCancel={() => setShowModal(false)} />
     </>
   );
 });
+
+Date.propTypes = {
+  date: PropTypes.string.isRequired,
+  currentMonth: PropTypes.bool,
+};
+
+Date.defaultProps = {
+  currentMonth: true,
+};
 
 export default Date;

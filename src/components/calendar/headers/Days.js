@@ -1,8 +1,6 @@
-import React from "react";
+import styles from './days.module.scss';
 
-import styles from "./days.module.scss";
-
-const Days = () => {
+function Days() {
   return (
     <div className={styles.days}>
       <div className={styles.day}>Su</div>
@@ -14,6 +12,6 @@ const Days = () => {
       <div className={styles.day}>Sa</div>
     </div>
   );
-};
+}
 
 export default Days;

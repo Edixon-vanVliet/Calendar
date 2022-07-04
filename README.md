@@ -1,5 +1,4 @@
-1. Create a calendar that shows current months and all days
-   Use moment.js
+1. Create a calendar that shows current months and all days Use moment.js
 2. Create a form to create events
    - Name of the event
    - Date (Readonly)
