@@ -1,6 +1,6 @@
 import React from "react";
 import { Modal, Form, Input, TimePicker } from "antd";
-import { timeFormat } from "../utils";
+import { timeFormat } from "../../utils";
 
 const ModalForm = ({ show, onSave, onCancel, date }) => {
   const [form] = Form.useForm();
