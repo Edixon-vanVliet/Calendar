@@ -19,6 +19,12 @@ const Date = memo(({ date, currentMonth }) => {
     }
   };
 
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      handleClick();
+    }
+  };
+
   const handleSave = (newEvent) => {
     dispatch(addEvent(newEvent));
 
@@ -33,7 +39,7 @@ const Date = memo(({ date, currentMonth }) => {
         className={styles.date}
         style={{ color: currentMonth ? 'black' : '#ccc' }}
         onClick={handleClick}
-        onKeyDown={handleClick}
+        onKeyDown={handleKeyDown}
       >
         <p>{date.substring(date.length - 2)}</p>
         <div className={styles.events}>
