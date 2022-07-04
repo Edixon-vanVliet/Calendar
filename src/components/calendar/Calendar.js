@@ -1,27 +1,24 @@
-import React, { useEffect, useState } from "react";
-import moment from "moment";
-import Days from "./Days";
-import Dates from "./Dates";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { Header, Days } from "./headers";
+import Dates from "./dates";
+import { initializeCalendar } from "../../redux/calendarSlice";
 
-import "./calendar.css";
+import styles from "./calendar.module.scss";
 
 const Calendar = () => {
-  const [currentDate] = useState(moment());
-  const [startingDate, setStartingDate] = useState();
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const date = moment().startOf("month");
-    const day = date.day();
-
-    setStartingDate(date.subtract(day, "days"));
-  }, []);
+    dispatch(initializeCalendar());
+  }, [dispatch]);
 
   return (
-    <div className="calendar">
-      <h2>{currentDate.format("MMMM")}</h2>
+    <div className={styles.calendar}>
+      <Header />
 
       <Days />
-      <Dates currentDate={currentDate} startingDate={startingDate} />
+      <Dates />
     </div>
   );
 };
