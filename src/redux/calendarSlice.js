@@ -1,6 +1,6 @@
-import { createSlice } from "@reduxjs/toolkit";
-import moment from "moment";
-import { dateFormat } from "../utils";
+import { createSlice } from '@reduxjs/toolkit';
+import moment from 'moment';
+import { dateFormat } from '../utils';
 
 const initialState = {
   current: { year: 0, month: 0 },
@@ -9,10 +9,10 @@ const initialState = {
 };
 
 const daysInWeek = 7;
-const localStorageName = "events";
+const localStorageName = 'events';
 
 export const calendarSlice = createSlice({
-  name: "calendar",
+  name: 'calendar',
   initialState,
   reducers: {
     initializeCalendar: () => {
@@ -31,7 +31,7 @@ export const calendarSlice = createSlice({
       const { current } = state;
       const date = moment(`${current.year}-${current.month}`);
 
-      date.add(1, "months");
+      date.add(1, 'months');
 
       return {
         ...state,
@@ -43,7 +43,7 @@ export const calendarSlice = createSlice({
       const { current } = state;
       const date = moment(`${current.year}-${current.month}`);
 
-      date.subtract(1, "months");
+      date.subtract(1, 'months');
 
       return {
         ...state,
@@ -70,8 +70,8 @@ export const calendarSlice = createSlice({
 });
 
 const calculateDateRange = (date) => {
-  const startingDate = date.clone().startOf("month");
-  const endingDate = date.clone().endOf("month");
+  const startingDate = date.clone().startOf('month');
+  const endingDate = date.clone().endOf('month');
 
   getFirstDayOfWeek(startingDate);
   getLastDayOfWeek(endingDate);
@@ -81,15 +81,14 @@ const calculateDateRange = (date) => {
 
 const getFirstDayOfWeek = (date) => {
   const day = date.day();
-  date.subtract(day, "days");
+  date.subtract(day, 'days');
 };
 
 const getLastDayOfWeek = (date) => {
   const day = daysInWeek - date.day();
-  date.add(day, "days");
+  date.add(day, 'days');
 };
 
-export const { initializeCalendar, nextMonth, previousMonth, addEvent } =
-  calendarSlice.actions;
+export const { initializeCalendar, nextMonth, previousMonth, addEvent } = calendarSlice.actions;
 
 export default calendarSlice.reducer;

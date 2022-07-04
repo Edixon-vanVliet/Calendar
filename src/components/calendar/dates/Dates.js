@@ -1,9 +1,9 @@
-import React from "react";
-import { shallowEqual, useSelector } from "react-redux";
-import Date from "./Date";
-import moment from "moment";
+import React from 'react';
+import { shallowEqual, useSelector } from 'react-redux';
+import Date from './Date';
+import moment from 'moment';
 
-import styles from "./dates.module.scss";
+import styles from './dates.module.scss';
 
 const Dates = () => {
   const { currentMonth, dateRange } = useSelector(
@@ -33,7 +33,7 @@ const Dates = () => {
         />
       );
 
-      startingDate.add(1, "days");
+      startingDate.add(1, 'days');
     }
 
     return dates;

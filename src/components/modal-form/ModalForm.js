@@ -1,6 +1,6 @@
-import React from "react";
-import { Modal, Form, Input, TimePicker } from "antd";
-import { timeFormat } from "../../utils";
+import React from 'react';
+import { Modal, Form, Input, TimePicker } from 'antd';
+import { timeFormat } from '../../utils';
 
 const ModalForm = ({ show, onSave, onCancel, date }) => {
   const [form] = Form.useForm();
@@ -16,13 +16,7 @@ const ModalForm = ({ show, onSave, onCancel, date }) => {
     } catch (error) {}
   };
   return (
-    <Modal
-      title="Event"
-      visible={show}
-      okText="Save"
-      onOk={handleOk}
-      onCancel={onCancel}
-    >
+    <Modal title="Event" visible={show} okText="Save" onOk={handleOk} onCancel={onCancel}>
       <Form
         form={form}
         labelCol={{ span: 5 }}
@@ -40,24 +34,16 @@ const ModalForm = ({ show, onSave, onCancel, date }) => {
           rules={[
             {
               required: true,
-              message: "Please input the name of the event",
+              message: 'Please input the name of the event',
             },
           ]}
         >
           <Input />
         </Form.Item>
-        <Form.Item
-          name="start"
-          label="Start Time"
-          rules={[{ required: true, message: "Please provide a start time" }]}
-        >
+        <Form.Item name="start" label="Start Time" rules={[{ required: true, message: 'Please provide a start time' }]}>
           <TimePicker />
         </Form.Item>
-        <Form.Item
-          name="end"
-          label="End Time"
-          rules={[{ required: true, message: "Please provide an end time" }]}
-        >
+        <Form.Item name="end" label="End Time" rules={[{ required: true, message: 'Please provide an end time' }]}>
           <TimePicker />
         </Form.Item>
         <Form.Item name="description" label="Description">

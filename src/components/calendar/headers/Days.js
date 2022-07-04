@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-import styles from "./days.module.scss";
+import styles from './days.module.scss';
 
 const Days = () => {
   return (
