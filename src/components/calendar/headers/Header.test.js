@@ -1,9 +1,8 @@
-const { Provider } = require('react-redux');
 const { render, screen } = require('@testing-library/react');
-const { default: Header } = require('./Header');
-
+const { Provider } = require('react-redux');
 // eslint-disable-next-line jest/no-mocks-import
 const { store } = require('../../../redux/__mocks__/store');
+const { default: Header } = require('./Header');
 
 describe('Header tests', () => {
   test('should render current month', () => {
