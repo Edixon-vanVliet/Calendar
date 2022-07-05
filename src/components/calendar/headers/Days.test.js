@@ -1,5 +1,5 @@
-const { render, screen } = require('@testing-library/react');
-const { default: Days } = require('./Days');
+import { render, screen } from '@testing-library/react';
+import Days from './Days';
 
 describe('Days tests', () => {
   test('should render days of the week', () => {

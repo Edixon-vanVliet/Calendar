@@ -1,13 +1,15 @@
-const { render, screen } = require('@testing-library/react');
-const { Provider } = require('react-redux');
-// eslint-disable-next-line jest/no-mocks-import
-const { store } = require('../../../store/__mocks__/store');
-const { default: Dates } = require('./Dates');
+import { render, screen } from '@testing-library/react';
+import { Provider } from 'react-redux';
+import configureStore from 'redux-mock-store';
+import { calendarState } from '__mocks-data__/calendarState.mock';
+import Dates from './Dates';
+
+const mockStore = configureStore([]);
 
 describe('Dates tests', () => {
   test('should display dates', () => {
     render(
-      <Provider store={store}>
+      <Provider store={mockStore(calendarState)}>
         <Dates />
       </Provider>
     );
@@ -46,12 +48,23 @@ describe('Dates tests', () => {
 
   test('should display event', () => {
     render(
-      <Provider store={store}>
+      <Provider store={mockStore(calendarState)}>
         <Dates />
       </Provider>
     );
 
     const event = screen.getByText('Independence Day');
     expect(event).toBeInTheDocument();
+  });
+
+  test('should return empty array', () => {
+    const state = { ...calendarState, calendar: { ...calendarState.calendar, dateRange: ['2022/06/26'] } };
+    render(
+      <Provider store={mockStore(state)}>
+        <Dates />
+      </Provider>
+    );
+
+    expect(screen.queryByText('01')).not.toBeInTheDocument();
   });
 });
