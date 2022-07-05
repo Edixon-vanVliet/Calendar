@@ -21,7 +21,7 @@
   "scripts": {
     "start": "webpack serve --mode development",
     "build": "webpack --mode production",
-    "test": "react-scripts test",
+    "test": "jest --coverage --verbose --runInBand",
     "eject": "react-scripts eject",
     "format": "prettier --write .",
     "lint": "eslint ."
@@ -68,6 +68,10 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-testing-library": "^5.5.1",
     "html-webpack-plugin": "^5.5.0",
+    "jest": "^28.1.2",
+    "jest-canvas-mock": "^2.4.0",
+    "jest-environment-jsdom": "^28.1.2",
+    "jest-localstorage-mock": "^2.4.21",
     "less": "^4.1.3",
     "less-loader": "^11.0.0",
     "mini-css-extract-plugin": "^2.6.1",
