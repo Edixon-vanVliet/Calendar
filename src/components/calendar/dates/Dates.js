@@ -5,7 +5,7 @@ import Date from './Date';
 
 import styles from './dates.module.scss';
 
-function Dates() {
+const Dates = () => {
   const { currentMonth, dateRange } = useSelector(
     (store) => ({
       dateRange: store.calendar.dateRange,
@@ -40,6 +40,6 @@ function Dates() {
   };
 
   return <div className={styles.dates}>{getDates()}</div>;
-}
+};
 
 export default Dates;
