@@ -35,11 +35,38 @@ module.exports = (env, argv) => {
     ],
   };
 
+  const LessRule = {
+    test: /\.less$/,
+    use: [
+      isLocal ? 'style-loader' : MiniCssExtractPlugin.loader,
+      'css-loader',
+      {
+        loader: 'less-loader',
+        options: { lessOptions: { javascriptEnabled: true } },
+      },
+    ],
+  };
+
+  const ImageRule = {
+    test: /\.(jpe?g|png|gif)$/,
+    use: [{ loader: 'url-loader', options: { limit: 10000 } }],
+  };
+
+  const SvgImageRule = {
+    test: /\.svg$/,
+    use: [{ loader: 'babel-loader' }, { loader: 'react-svg-loader', options: { jsx: true } }],
+  };
+
+  const FontRule = {
+    test: /\.(eot|ttf|woff2?|otf)$/,
+    use: 'file-loader',
+  };
+
   return {
     entry: ['@babel/polyfill', './src/index.js'],
     devtool: isLocal && 'eval',
     module: {
-      rules: [JsRule, SassRule],
+      rules: [JsRule, SassRule, LessRule, ImageRule, SvgImageRule, FontRule],
     },
     plugins: [
       new CleanWebpackPlugin(),
