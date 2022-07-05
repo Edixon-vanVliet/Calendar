@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { initializeCalendar } from '../../redux/calendarSlice';
+import { initializeCalendar } from '../../store/calendarSlice';
 import { Dates } from './dates';
 import { Header, Days } from './headers';
 

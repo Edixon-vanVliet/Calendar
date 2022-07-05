@@ -1,7 +1,7 @@
 const { render, screen } = require('@testing-library/react');
 const { Provider } = require('react-redux');
 // eslint-disable-next-line jest/no-mocks-import
-const { store } = require('../../../redux/__mocks__/store');
+const { store } = require('../../../store/__mocks__/store');
 const { default: Dates } = require('./Dates');
 
 describe('Dates tests', () => {
