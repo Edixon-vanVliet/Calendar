@@ -1,8 +1,8 @@
-const { render, screen } = require('@testing-library/react');
-const { Provider } = require('react-redux');
-const { default: configureStore } = require('redux-mock-store');
-const { calendarState } = require('__mocks-data__/calendarState.mock');
-const { default: Header } = require('./Header');
+import { render, screen } from '@testing-library/react';
+import { Provider } from 'react-redux';
+import configureStore from 'redux-mock-store';
+import { calendarState } from '__mocks-data__/calendarState.mock';
+import Header from './Header';
 
 const mockStore = configureStore([]);
 
