@@ -35,18 +35,44 @@ module.exports = (env, argv) => {
     ],
   };
 
+  const LessRule = {
+    test: /\.less$/,
+    use: [
+      isLocal ? 'style-loader' : MiniCssExtractPlugin.loader,
+      'css-loader',
+      {
+        loader: 'less-loader',
+        options: { lessOptions: { javascriptEnabled: true } },
+      },
+    ],
+  };
+
+  const ImageRule = {
+    test: /\.(jpe?g|png|gif)$/,
+    use: [{ loader: 'url-loader', options: { limit: 10000 } }],
+  };
+
+  const SvgImageRule = {
+    test: /\.svg$/,
+    use: [{ loader: 'babel-loader' }, { loader: 'react-svg-loader', options: { jsx: true } }],
+  };
+
+  const FontRule = {
+    test: /\.(eot|ttf|woff2?|otf)$/,
+    use: 'file-loader',
+  };
+
   return {
     entry: ['@babel/polyfill', './src/index.js'],
     devtool: isLocal && 'eval',
     module: {
-      rules: [JsRule, SassRule],
+      rules: [JsRule, SassRule, LessRule, ImageRule, SvgImageRule, FontRule],
     },
     plugins: [
       new CleanWebpackPlugin(),
       new HtmlWebpackPlugin({ template: './src/index.html' }),
       new MiniCssExtractPlugin({ filename: 'app_[chunkhash].css' }),
       new webpack.DefinePlugin({ 'process.env': { isLocal } }),
-      // new BundleAnalyzerPlugin(),
     ],
     optimization: {
       minimize: !isLocal,
@@ -61,9 +87,18 @@ module.exports = (env, argv) => {
     resolve: {
       extensions: ['.js'],
       alias: {
+        '__mocks-data__': path.resolve(__dirname, './__mocks-data__'),
+        __mocks__: path.resolve(__dirname, './__mocks__'),
         components: path.resolve(__dirname, './src/components'),
-        redux: path.resolve(__dirname, './src/redux'),
+        constants: path.resolve(__dirname, './src/constants'),
+        hooks: path.resolve(__dirname, './src/hooks'),
+        i18n: path.resolve(__dirname, './src/i18n'),
+        images: path.resolve(__dirname, './src/images'),
+        pages: path.resolve(__dirname, './src/pages'),
+        services: path.resolve(__dirname, './src/services'),
+        store: path.resolve(__dirname, './src/store'),
         styles: path.resolve(__dirname, './src/styles'),
+        utils: path.resolve(__dirname, './src/utils'),
       },
     },
     mode,

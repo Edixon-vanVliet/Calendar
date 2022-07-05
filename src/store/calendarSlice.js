@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import moment from 'moment';
-import { dateFormat } from '../utils';
+import { dateFormat } from 'utils/formats';
 
 const initialState = {
   current: { year: 0, month: 0 },

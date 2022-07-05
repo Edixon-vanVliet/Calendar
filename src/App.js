@@ -1,6 +1,6 @@
 import { PageHeader } from 'antd';
-import { Calendar } from './components/calendar';
-import { Container } from './components/container';
+import { Calendar } from 'components/calendar';
+import { Container } from 'components/container';
 
 const App = () => (
   <div>
