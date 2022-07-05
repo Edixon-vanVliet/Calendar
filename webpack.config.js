@@ -46,7 +46,6 @@ module.exports = (env, argv) => {
       new HtmlWebpackPlugin({ template: './src/index.html' }),
       new MiniCssExtractPlugin({ filename: 'app_[chunkhash].css' }),
       new webpack.DefinePlugin({ 'process.env': { isLocal } }),
-      // new BundleAnalyzerPlugin(),
     ],
     optimization: {
       minimize: !isLocal,
