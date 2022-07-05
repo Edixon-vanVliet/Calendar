@@ -1,6 +1,6 @@
 import { Modal, Form, Input, TimePicker } from 'antd';
 import PropTypes from 'prop-types';
-import { timeFormat } from '../../utils/formats';
+import { timeFormat } from 'utils/formats';
 
 const ModalForm = ({ date, show, onCancel, onSave }) => {
   const [form] = Form.useForm();
