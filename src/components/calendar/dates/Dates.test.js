@@ -56,4 +56,15 @@ describe('Dates tests', () => {
     const event = screen.getByText('Independence Day');
     expect(event).toBeInTheDocument();
   });
+
+  test('should return empty array', () => {
+    const state = { ...calendarState, calendar: { ...calendarState.calendar, dateRange: ['2022/06/26'] } };
+    render(
+      <Provider store={mockStore(state)}>
+        <Dates />
+      </Provider>
+    );
+
+    expect(screen.queryByText('01')).not.toBeInTheDocument();
+  });
 });
