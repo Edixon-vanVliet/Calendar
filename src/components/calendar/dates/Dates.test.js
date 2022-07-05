@@ -1,13 +1,15 @@
 const { render, screen } = require('@testing-library/react');
 const { Provider } = require('react-redux');
-// eslint-disable-next-line jest/no-mocks-import
-const { store } = require('../../../store/__mocks__/store');
+const { default: configureStore } = require('redux-mock-store');
+const { calendarState } = require('__mocks-data__/calendarState.mock');
 const { default: Dates } = require('./Dates');
+
+const mockStore = configureStore([]);
 
 describe('Dates tests', () => {
   test('should display dates', () => {
     render(
-      <Provider store={store}>
+      <Provider store={mockStore(calendarState)}>
         <Dates />
       </Provider>
     );
@@ -46,7 +48,7 @@ describe('Dates tests', () => {
 
   test('should display event', () => {
     render(
-      <Provider store={store}>
+      <Provider store={mockStore(calendarState)}>
         <Dates />
       </Provider>
     );
