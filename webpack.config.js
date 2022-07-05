@@ -87,9 +87,18 @@ module.exports = (env, argv) => {
     resolve: {
       extensions: ['.js'],
       alias: {
+        '__mocks-data__': path.resolve(__dirname, './__mocks-data__'),
+        __mocks__: path.resolve(__dirname, './__mocks__'),
         components: path.resolve(__dirname, './src/components'),
+        constants: path.resolve(__dirname, './src/constants'),
+        hooks: path.resolve(__dirname, './src/hooks'),
+        i18n: path.resolve(__dirname, './src/i18n'),
+        images: path.resolve(__dirname, './src/images'),
+        pages: path.resolve(__dirname, './src/pages'),
+        services: path.resolve(__dirname, './src/services'),
         redux: path.resolve(__dirname, './src/redux'),
         styles: path.resolve(__dirname, './src/styles'),
+        utils: path.resolve(__dirname, './src/utils'),
       },
     },
     mode,
