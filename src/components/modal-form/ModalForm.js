@@ -2,7 +2,7 @@ import { Modal, Form, Input, TimePicker } from 'antd';
 import PropTypes from 'prop-types';
 import { timeFormat } from '../../utils';
 
-function ModalForm({ date, show, onCancel, onSave }) {
+const ModalForm = ({ date, show, onCancel, onSave }) => {
   const [form] = Form.useForm();
   const handleOk = async () => {
     try {
@@ -54,7 +54,7 @@ function ModalForm({ date, show, onCancel, onSave }) {
       </Form>
     </Modal>
   );
-}
+};
 
 ModalForm.propTypes = {
   date: PropTypes.string.isRequired,

@@ -5,7 +5,7 @@ import { nextMonth, previousMonth } from '../../../redux/calendarSlice';
 
 import styles from './header.module.scss';
 
-function Header() {
+const Header = () => {
   const current = useSelector((store) => store.calendar.current);
   const dispatch = useDispatch();
 
@@ -20,6 +20,6 @@ function Header() {
       </Button>
     </div>
   );
-}
+};
 
 export default Header;

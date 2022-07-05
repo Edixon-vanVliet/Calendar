@@ -6,7 +6,7 @@ import { Header, Days } from './headers';
 
 import styles from './calendar.module.scss';
 
-function Calendar() {
+const Calendar = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -21,6 +21,6 @@ function Calendar() {
       <Dates />
     </div>
   );
-}
+};
 
 export default Calendar;
