@@ -1,6 +1,6 @@
 import moment from 'moment';
 import { shallowEqual, useSelector } from 'react-redux';
-import { dateFormat } from '../../../utils';
+import { dateFormat } from '../../../utils/formats';
 import Date from './Date';
 
 import styles from './dates.module.scss';
