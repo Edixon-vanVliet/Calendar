@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import { memo, useState } from 'react';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-import { addEvent } from 'store/calendarSlice';
 import { ModalForm } from 'components/modal-form';
+import { addEvent } from 'store/calendarSlice';
 
 import styles from './dates.module.scss';
 
